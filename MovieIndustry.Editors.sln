@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieIndustry.ConsoleEditor", "MovieIndustry.ConsoleEditor\MovieIndustry.ConsoleEditor.csproj", "{C069338B-5E01-4929-8E95-91EEFFBD4974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "CommonLibraries\Common.csproj", "{4466ADE6-5D71-4D83-BBE0-BF7E07A3848E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubjectAreaLibraries.MovieIndustry", "SubjectAreaLibraries.MovieIndustry\SubjectAreaLibraries.MovieIndustry.csproj", "{3A159786-F9EC-439D-B008-11F06089AEE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{3A0A5E0C-8510-48D1-B063-6A74E7C85FCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonLibraries_", "CommonLibraries_", "{C960D033-CD4F-4961-BA13-C44AC838A123}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubjectAreaLibraries_", "SubjectAreaLibraries_", "{0D27C111-C55F-47EF-BCB3-C5918C3AF6F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C069338B-5E01-4929-8E95-91EEFFBD4974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C069338B-5E01-4929-8E95-91EEFFBD4974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C069338B-5E01-4929-8E95-91EEFFBD4974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C069338B-5E01-4929-8E95-91EEFFBD4974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4466ADE6-5D71-4D83-BBE0-BF7E07A3848E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4466ADE6-5D71-4D83-BBE0-BF7E07A3848E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4466ADE6-5D71-4D83-BBE0-BF7E07A3848E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4466ADE6-5D71-4D83-BBE0-BF7E07A3848E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A159786-F9EC-439D-B008-11F06089AEE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A159786-F9EC-439D-B008-11F06089AEE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A159786-F9EC-439D-B008-11F06089AEE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A159786-F9EC-439D-B008-11F06089AEE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C069338B-5E01-4929-8E95-91EEFFBD4974} = {3A0A5E0C-8510-48D1-B063-6A74E7C85FCF}
+		{4466ADE6-5D71-4D83-BBE0-BF7E07A3848E} = {C960D033-CD4F-4961-BA13-C44AC838A123}
+		{3A159786-F9EC-439D-B008-11F06089AEE9} = {0D27C111-C55F-47EF-BCB3-C5918C3AF6F3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9EBD0D47-BFF0-46D7-9F85-2B88039332D5}
+	EndGlobalSection
+EndGlobal
