@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using MovieIndustry.Data;
 using SubjectAreaLibraries.MovieIndustry.Data;
 
 namespace SubjectAreaLibraries.MovieIndustry.Data.IO
 {
     public class PrimBinaryFileIoController
     {
-
         public string FileExtension
         {
             get { return ".bin"; }
@@ -14,7 +14,7 @@ namespace SubjectAreaLibraries.MovieIndustry.Data.IO
 
         public string FileTypeCaption
         {
-            get { return "Двійкові файли"; }
+            get { return "Двійкові файли фільмів"; }
         }
 
         public void Save(PrimDataSet dataSet, string filePath)

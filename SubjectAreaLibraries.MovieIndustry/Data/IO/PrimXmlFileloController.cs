@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
-using SubjectAreaLibraries.MovieIndustry.Entities;
+using MovieIndustry.Entities;
 using SubjectAreaLibraries.MovieIndustry.Data;
 
-namespace SubjectAreaLibraries.MovieIndustry.Data.IO
+namespace MovieIndustry.Data.IO
 {
     public class PrimXmlFileIoController
     {
-
         public string FileExtension
         {
             get { return ".xml"; }
@@ -26,32 +25,42 @@ namespace SubjectAreaLibraries.MovieIndustry.Data.IO
             filePath = Path.ChangeExtension(filePath, FileExtension);
             XmlWriterSettings settings = new XmlWriterSettings
             {
-                Encoding = Encoding.Unicode,
-                Indent = true
+                Encoding = Encoding.Unicode
             };
+            XmlWriter writer = null;
 
-            using (XmlWriter writer = XmlWriter.Create(filePath, settings))
+            try
             {
+                writer = XmlWriter.Create(filePath, settings);
                 writer.WriteStartDocument();
                 writer.WriteStartElement("MovieIndustry");
-
-                WriteMovies(dataSet.Movies, writer);
-
+                WriteMovies(dataSet.Movie, writer);
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                writer?.Close();
             }
         }
 
         private void WriteMovies(IEnumerable<Movie> collection, XmlWriter writer)
         {
             writer.WriteStartElement("Movies");
-            foreach (var obj in collection)
+            foreach (var movie in collection)
             {
                 writer.WriteStartElement("Movie");
-                writer.WriteElementString("Id", obj.Id.ToString());
-                writer.WriteElementString("Title", obj.Title);
-                writer.WriteElementString("Genre", obj.Genre);
-                writer.WriteElementString("Year", obj.Year.ToString());
+                writer.WriteElementString("Id", movie.Id.ToString());
+                writer.WriteElementString("Title", movie.Title);
+                writer.WriteElementString("Director", movie.Director);
+                writer.WriteElementString("Genre", movie.Genre);
+                writer.WriteElementString("ReleaseYear", movie.ReleaseYear?.ToString() ?? "");
+                writer.WriteElementString("Rating", movie.Rating?.ToString() ?? "");
+                writer.WriteElementString("Description", movie.Description);
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();
@@ -77,18 +86,28 @@ namespace SubjectAreaLibraries.MovieIndustry.Data.IO
                     }
                 }
             }
+
             return true;
         }
 
         private void ReadMovie(XmlReader reader, PrimDataSet dataSet)
         {
-            Movie obj = new Movie();
+            Movie movie = new Movie();
             reader.ReadStartElement("Movie");
-            obj.Id = reader.ReadElementContentAsInt();
-            obj.Title = reader.ReadElementContentAsString();
-            obj.Genre = reader.ReadElementContentAsString();
-            obj.Year = reader.ReadElementContentAsInt();
-            dataSet.Movies.Add(obj);
+            movie.Id = reader.ReadElementContentAsInt();
+            movie.Title = reader.ReadElementContentAsString();
+            movie.Director = reader.ReadElementContentAsString();
+            movie.Genre = reader.ReadElementContentAsString();
+
+            string yearStr = reader.ReadElementContentAsString();
+            movie.ReleaseYear = string.IsNullOrEmpty(yearStr) ? (int?)null : int.Parse(yearStr);
+
+            string ratingStr = reader.ReadElementContentAsString();
+            movie.Rating = string.IsNullOrEmpty(ratingStr) ? (double?)null : double.Parse(ratingStr);
+
+            movie.Description = reader.ReadElementContentAsString();
+
+            dataSet.Movie.Add(movie);
         }
     }
 }

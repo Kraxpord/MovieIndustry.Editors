@@ -1,6 +1,7 @@
 ﻿using Common.ConsoleIO;
 using System;
-using MovieIndustry.ConsoleEditor.Studying;
+using FilmStudio.Training;
+using MovieIndustry.Training;
 
 namespace MovieIndustry.ConsoleEditor
 {
@@ -14,8 +15,8 @@ namespace MovieIndustry.ConsoleEditor
 
             Console.WriteLine(" Реалізація редактора даних ПО \"Кіноіндустрія\"");
 
-            //DataTraining.Run();
-            FileIoTraining.Run();
+            DataTraining.Run();
+            //FileIoTraining.Run();
 
             Console.ReadKey(true);
         }
