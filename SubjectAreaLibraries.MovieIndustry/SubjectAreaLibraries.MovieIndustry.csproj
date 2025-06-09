@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Formatting\FormattingMethods.cs" />
+    <Compile Include="Data\Formatting\MovieDataSet.cs" />
     <Compile Include="Data\IO\PrimBinaryFileloController.cs" />
     <Compile Include="Data\IO\PrimXmlFileloController.cs" />
+    <Compile Include="Data\PrimDataContext.cs" />
     <Compile Include="Data\PrimDataSet.cs" />
     <Compile Include="Data\Testing\DataCreation.cs" />
     <Compile Include="Entities\Movie.cs" />

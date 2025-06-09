@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using SubjectAreaLibraries.MovieIndustry.Data;
-using SubjectAreaLibraries.MovieIndustry.Data.Formatting;
-using SubjectAreaLibraries.MovieIndustry.Data.Testing;
+using MovieIndustry.Data;
+using MovieIndustry.Data.Formatting;
+using MovieIndustry.Data.Testing;
 
-namespace MovieIndustry.ConsoleEditor.Studying
+namespace MovieIndustry.Training
 {
     internal class DataTraining
     {
@@ -12,7 +12,8 @@ namespace MovieIndustry.ConsoleEditor.Studying
         {
             Console.WriteLine(" === DataTraining ===");
 
-            StudyDataSet();
+            //StudyDataSet();
+            StudyDataContext();
         }
 
         private static void StudyDataSet()
@@ -25,9 +26,25 @@ namespace MovieIndustry.ConsoleEditor.Studying
             Console.WriteLine(new string('-', Console.BufferWidth - 1));
 
             dataSet.CreateTestingData();
-
             Console.WriteLine("dataSet.Movies.FirstOrDefault():\n"
-                + dataSet.Movies.FirstOrDefault());
+                + dataSet.Movie.FirstOrDefault());
+        }
+
+        private static void StudyDataContext()
+        {
+            Console.WriteLine(" --- StudyDataContext ---");
+
+            PrimDataContext dataContext = new PrimDataContext();
+            Console.WriteLine("dataContext.IsEmpty():\t" + dataContext.IsEmpty());
+            dataContext.CreateTestingData();
+            Console.WriteLine("dataContext.IsEmpty():\t" + dataContext.IsEmpty());
+            Console.WriteLine("dataContext:\n" + dataContext);
+
+            Console.WriteLine(new string('-', Console.BufferWidth - 1));
+
+            dataContext.Clear();
+            Console.WriteLine("dataContext.IsEmpty():\t" + dataContext.IsEmpty());
+            Console.WriteLine("dataContext:\n" + dataContext);
         }
     }
 }

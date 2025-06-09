@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using SubjectAreaLibraries.MovieIndustry.Entities;
+using MovieIndustry.Entities;
 
-namespace SubjectAreaLibraries.MovieIndustry.Data
+namespace MovieIndustry.Data
 {
     [Serializable]
     public class PrimDataSet
     {
-        public readonly List<Movie> Movies = new List<Movie>();
+        public readonly List<Movie> Movie = new List<Movie>();
 
         public void Clear()
         {
-            Movies.Clear();
+            Movie.Clear();
         }
 
         public virtual bool IsEmpty()
         {
-            return Movies.Count == 0;
+            return Movie.Count == 0;
         }
 
         public void CopyTo(PrimDataSet other)
         {
-            foreach (var movie in Movies)
-                other.Movies.Add(movie);
+            foreach (var obj in Movie)
+                other.Movie.Add(obj);
         }
     }
 }
