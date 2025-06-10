@@ -27,7 +27,7 @@ namespace MovieIndustry.Training
 
             dataSet.CreateTestingData();
             Console.WriteLine("dataSet.Movies.FirstOrDefault():\n"
-                + dataSet.Movie.FirstOrDefault());
+                + dataSet.Movies.FirstOrDefault());
         }
 
         private static void StudyDataContext()

@@ -13,7 +13,7 @@ namespace MovieIndustry.Data
 
         public ICollection<Movie> Movies
         {
-            get { return _dataSet.Movie; }
+            get { return (ICollection<Movie>)_dataSet.Movie; }
         }
 
         public void Clear()
@@ -63,9 +63,8 @@ namespace MovieIndustry.Data
 
         public PrimDataContext() : this("") { }
 
+        // Можна змінити на бінарний контролер при потребі
         protected PrimXmlFileIoController _fileIoController = new PrimXmlFileIoController();
-        // Можна також використати бінарний контролер, якщо потрібно:
-        // protected PrimBinaryFileIoController _fileIoController = new PrimBinaryFileIoController();
 
         public string FilePath
         {
