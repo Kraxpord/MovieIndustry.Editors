@@ -7,22 +7,43 @@ namespace MovieIndustry.Data
     [Serializable]
     public class PrimDataSet
     {
-        public readonly List<Movie> Movie = new List<Movie>();
+        // Основна колекція фільмів
+        public readonly List<Movie> Movies = new List<Movie>();
+
+        // Прибираємо цю непотрібну властивість, або:
+        // Ініціалізуємо її посиланням на Movies
+        public ICollection<Movie> Movie => Movies;
 
         public void Clear()
         {
-            Movie.Clear();
+            Movies.Clear();
         }
 
         public virtual bool IsEmpty()
         {
-            return Movie.Count == 0;
+            return Movies.Count == 0;
         }
 
         public void CopyTo(PrimDataSet other)
         {
-            foreach (var obj in Movie)
-                other.Movie.Add(obj);
+            foreach (var movie in Movies)
+                other.Movies.Add(movie);
+        }
+
+        public string ToDataString(string title = "")
+        {
+            return title + ":\n" + string.Join("\n", Movies);
+        }
+
+        public bool CreateTestingData()
+        {
+            Movies.Clear();
+
+            Movies.Add(new Movie("Inception", "Christopher Nolan", 2010, "Sci-Fi") { Rating = 8.8 });
+            Movies.Add(new Movie("The Matrix", "Lana Wachowski", 1999, "Action") { Rating = 8.7 });
+            Movies.Add(new Movie("Parasite", "Bong Joon-ho", 2019, "Thriller") { Rating = 8.6 });
+
+            return true;
         }
     }
 }

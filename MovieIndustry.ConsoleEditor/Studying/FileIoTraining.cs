@@ -34,15 +34,14 @@ namespace MovieIndustry.Training
             Console.WriteLine(new string('-', Console.BufferWidth - 1));
 
             dataSet.Clear();
-            Console.WriteLine(dataSet.ToDataString("dataSet (after clear)"));
-
+            Console.WriteLine(dataSet.ToDataString("dataSet"));
             xmlController.Load(dataSet, fileName);
-            Console.WriteLine(dataSet.ToDataString("dataSet (after load)"));
+            Console.WriteLine(dataSet.ToDataString("dataSet"));
         }
 
         private static void StudyBinaryFileIo()
         {
-            Console.WriteLine(" --- StudyBinaryFileIo  ---");
+            Console.WriteLine(" --- StudyBinaryFileIo ---");
 
             PrimBinaryFileIoController binaryController = new PrimBinaryFileIoController();
 
@@ -56,10 +55,9 @@ namespace MovieIndustry.Training
             Console.WriteLine(new string('-', Console.BufferWidth - 1));
 
             dataSet.Clear();
-            Console.WriteLine(dataSet.ToDataString("dataSet (after clear)"));
-
+            Console.WriteLine(dataSet.ToDataString("dataSet"));
             binaryController.Load(dataSet, fileName);
-            Console.WriteLine(dataSet.ToDataString("dataSet (after load)"));
+            Console.WriteLine(dataSet.ToDataString("dataSet"));
         }
 
         private static void StudyDataContextIo()
@@ -69,17 +67,15 @@ namespace MovieIndustry.Training
             var dataContext = new PrimDataContext();
             dataContext.CreateTestingData();
             Console.WriteLine("dataContext: " + dataContext);
-
             dataContext.DirectoryName = @"..\..\files";
             dataContext.Save();
 
             Console.WriteLine(new string('-', Console.BufferWidth - 1));
 
             dataContext.Clear();
-            Console.WriteLine("dataContext (after clear): " + dataContext);
-
+            Console.WriteLine("dataContext: " + dataContext);
             dataContext.Load();
-            Console.WriteLine("dataContext (after load): " + dataContext);
+            Console.WriteLine("dataContext: " + dataContext);
         }
     }
 }

@@ -5,37 +5,34 @@ namespace MovieIndustry.Entities
     [Serializable]
     public class Movie
     {
-        private double v2;
-
         public int Id { get; set; }
-
         public string Title { get; set; }
         public string Director { get; set; }
         public int? ReleaseYear { get; set; }
         public string Genre { get; set; }
-        public double? Rating { get; set; } // Наприклад, рейтинг IMDb
-        public string Description { get; set; }
+        public double? Rating { get; set; } // Рейтинг, наприклад IMDb
         public string Note { get; set; }
+        public string Description { get; set; }
 
-        public string Key { get { return Title; } }
+        public string Key => Title;
 
-        public Movie(string title, string director, int? releaseYear, string genre)
+        // Основний конструктор
+        public Movie(string title, string director, int? releaseYear, string genre, double? rating = null)
         {
             Title = title;
             Director = director;
             ReleaseYear = releaseYear;
             Genre = genre;
+            Rating = rating;
         }
 
-        public Movie(string title, string director, string v, int v1)
-            : this(title, director, null, null) { }
+        // Без рейтингу
+        public Movie(string title, string director, int? releaseYear, string genre)
+            : this(title, director, releaseYear, genre, null)
+        { }
 
-        public Movie() : this(null, null, null, null) { }
-
-        public Movie(string title, string director, string v, int v1, double v2) : this(title, director, v, v1)
-        {
-            this.v2 = v2;
-        }
+        // Порожній конструктор — обов'язковий для XML/JSON-серіалізації
+        public Movie() { }
 
         public override string ToString()
         {
@@ -49,13 +46,13 @@ namespace MovieIndustry.Entities
                 "\t  Примітка: {6}\n" +
                 "\t  Опис: {7}",
                 Id,
-                Title,
-                Director,
-                ReleaseYear.HasValue ? ReleaseYear.ToString() : "Невідомо",
-                Genre,
-                Rating.HasValue ? Rating.ToString() : "Немає",
-                Note,
-                Description
+                Title ?? "Невідомо",
+                Director ?? "Невідомо",
+                ReleaseYear?.ToString() ?? "Невідомо",
+                Genre ?? "Невідомо",
+                Rating?.ToString("0.0") ?? "Немає",
+                Note ?? "—",
+                Description ?? "—"
             );
         }
     }

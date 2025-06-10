@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C069338B-5E01-4929-8E95-91EEFFBD4974}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MovieIndustry.ConsoleEditor</RootNamespace>
-    <AssemblyName>MovieIndustry.ConsoleEditor</AssemblyName>
+    <ProjectGuid>{12BA6866-F00D-4CB9-A2D7-D539EA7A0EE6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common.ConsoleUI</RootNamespace>
+    <AssemblyName>Common.ConsoleUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,31 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Editing\MenuItem.cs" />
-    <Compile Include="Editing\MovieEditor.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Studying\DataTraining.cs" />
-    <Compile Include="Studying\FileIoTraining.cs" />
-    <Compile Include="Studying\MovieDataContext.cs" />
+    <Compile Include="SimpleCommandController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common.ConsoleUI\Common.ConsoleUI.csproj">
-      <Project>{12ba6866-f00d-4cb9-a2d7-d539ea7a0ee6}</Project>
-      <Name>Common.ConsoleUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CommonLibraries\Common.csproj">
       <Project>{4466ade6-5d71-4d83-bbe0-bf7e07a3848e}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SubjectAreaLibraries.MovieIndustry\SubjectAreaLibraries.MovieIndustry.csproj">
-      <Project>{3a159786-f9ec-439d-b008-11f06089aee9}</Project>
-      <Name>SubjectAreaLibraries.MovieIndustry</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

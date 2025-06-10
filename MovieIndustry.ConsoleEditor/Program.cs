@@ -1,6 +1,7 @@
 ﻿using Common.ConsoleIO;
 using System;
-using FilmStudio.Training;
+using MovieIndustry.Data;
+using MovieIndustry.Editing;
 using MovieIndustry.Training;
 
 namespace MovieIndustry.ConsoleEditor
@@ -13,12 +14,32 @@ namespace MovieIndustry.ConsoleEditor
 
             ConsoleSettings.SetConsoleParam();
 
-            Console.WriteLine(" Реалізація редактора даних ПО \"Кіноіндустрія\"");
+            Console.WriteLine(" Реалізація редактора даних ПО \"Кіностудія\"");
 
-            DataTraining.Run();
+            //DataTraining.Run();
             //FileIoTraining.Run();
 
-            Console.ReadKey(true);
+            //Console.ReadKey(true);
+
+            RunProgram();
+        }
+
+        static MovieEditor _movieEditor = null;
+        static PrimDataContext _dataContext = null;
+
+        private static void RunProgram()
+        {
+            _dataContext = new PrimDataContext();
+            _dataContext.DirectoryName = @"..\..\files";
+
+        
+            if (_dataContext.IsEmpty())
+            {
+                _dataContext.CreateTestingData();  
+            }
+
+            _movieEditor = new MovieEditor(_dataContext);
+            _movieEditor.Run();
         }
     }
 }

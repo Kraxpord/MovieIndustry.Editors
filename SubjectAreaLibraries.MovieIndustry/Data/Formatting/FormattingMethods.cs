@@ -8,36 +8,48 @@ namespace MovieIndustry.Data.Formatting
 {
     public static class FormattingMethods
     {
+        // Формування всього набору фільмів
         public static string ToDataString(this PrimDataSet dataSet, string header = null)
         {
             if (header == null)
                 header = "ПО \"Кіноіндустрія\"";
-            return string.Concat(header == null ? "" : header + "\n",
-                dataSet.Movie.ToLineList("  Фільми"));
+
+            return string.Concat(
+                header + "\n",
+                dataSet.Movie.ToLineList("  Фільми")
+            );
         }
 
+        // Табличне представлення фільмів з пронумерованими рядками
         public static string ToTable(this IEnumerable<Movie> objects, string header = null)
         {
             if (header == null)
                 header = "Фільми";
+
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(header);
 
-            string format = "  {0,5} {1,-30} {2,-20} {3,6} {4,12}\n";
-            sb.AppendFormat(format, "Id", "Назва", "Режисер", "Рік", "Рейтинг");
-            sb.AppendFormat("  {0}\n", new string('-', 80));
+            // Шапка таблиці
+            string format = "  {0,5} {1,-30} {2,-20} {3,6} {4,10}\n";
+            sb.AppendFormat(format, "№", "Назва", "Режисер", "Рік", "Рейтинг");
+            sb.AppendFormat("  {0}\n", new string('-', 85));
 
+            // Пронумеровані рядки
+            int number = 1;
             foreach (var obj in objects)
             {
                 sb.AppendFormat(format,
-                    obj.Id,
-                    obj.Title,
-                    obj.Director,
-                    obj.ReleaseYear.HasValue ? obj.ReleaseYear.ToString() : "—",
-                    obj.Rating.HasValue ? obj.Rating.Value.ToString("0.0") : "—"
+                    number++,
+                    obj.Title ?? "—",
+                    obj.Director ?? "—",
+                    obj.ReleaseYear?.ToString() ?? "—",
+                    obj.Rating?.ToString("0.0") ?? "—"
                 );
             }
-            sb.Length--;
+
+            if (sb.Length > 0)
+                sb.Length--;
+
             return sb.ToString();
         }
     }
