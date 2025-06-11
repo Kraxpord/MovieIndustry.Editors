@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MovieIndustry.Entities.Movie">
+    <Position X="1.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAABAAgAEQEAAMAAAAAAAAAAAEAAAAAAAEAAAA=</HashCode>
+      <FileName>Entities\Movie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieIndustry.Data.PrimDataSet">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAQABAIAA=</HashCode>
+      <FileName>Data\PrimDataSet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Movies" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MovieIndustry.Data.PrimDataContext">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAgIAAAAEAEAIEAAAAAAAAAAAAAAABAABAAABAEAA=</HashCode>
+      <FileName>Data\PrimDataContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataSet" />
+      <Field Name="_fileIoController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MovieIndustry.Data.IO.PrimXmlFileIoController">
+    <Position X="1.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAIAAAAAAAAAgAAAAAAAAAAAAAEAAQAAAAA=</HashCode>
+      <FileName>Data\IO\PrimXmlFileloController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubjectAreaLibraries.MovieIndustry.Data.IO.PrimBinaryFileIoController">
+    <Position X="3.75" Y="6" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAA=</HashCode>
+      <FileName>Data\IO\PrimBinaryFileloController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieIndustry.Data.Formatting.FormattingMethods">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAgAAAA=</HashCode>
+      <FileName>Data\Formatting\FormattingMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieIndustry.Data.Testing.DataCreation">
+    <Position X="3.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Testing\DataCreation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

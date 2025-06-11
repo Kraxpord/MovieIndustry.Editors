@@ -114,5 +114,9 @@ namespace Common.ConsoleIO
             }
         }
 
+        public static int? InputNullableInt32(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

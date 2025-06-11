@@ -57,5 +57,13 @@
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Data.cd" />
+    <None Include="DataIo.cd" />
+    <None Include="DataIo_h.cd" />
+    <None Include="Data_h.cd" />
+    <None Include="Entities.cd" />
+    <None Include="FileIo_h.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

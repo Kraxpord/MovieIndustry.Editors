@@ -16,7 +16,7 @@ namespace MovieIndustry.Data.Formatting
 
             return string.Concat(
                 header + "\n",
-                dataSet.Movie.ToLineList("  Фільми")
+                dataSet.Movies.ToLineList("  Фільми")  // Множина
             );
         }
 

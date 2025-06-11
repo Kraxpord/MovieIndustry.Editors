@@ -16,6 +16,8 @@ namespace MovieIndustry.Entities
 
         public string Key => Title;
 
+        public int Year { get; set; }
+
         // Основний конструктор
         public Movie(string title, string director, int? releaseYear, string genre, double? rating = null)
         {
@@ -32,7 +34,15 @@ namespace MovieIndustry.Entities
         { }
 
         // Порожній конструктор — обов'язковий для XML/JSON-серіалізації
-        public Movie() { }
+        public Movie(string v, string v1) { }
+
+        public Movie(string v, string v1, int v2) : this(v, v1)
+        {
+        }
+
+        public Movie()
+        {
+        }
 
         public override string ToString()
         {

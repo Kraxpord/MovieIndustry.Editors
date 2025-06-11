@@ -1,7 +1,9 @@
 ﻿using Common.Collection;
+using Common.ConsoleIO;
 using Common.ConsoleUI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MovieIndustry.Data;
 using MovieIndustry.Data.Formatting;
 using MovieIndustry.Entities;
@@ -11,19 +13,13 @@ namespace MovieIndustry.Editing
     internal class MovieEditor
     {
         private readonly SimpleCommandController _commandController;
-
         private readonly PrimDataContext _dataContext;
         private readonly ICollection<Movie> _collection;
-        private Common.ConsoleUI.MenuItem[] _menuItems;
+        private MenuItem[] _menuItems;
 
         public MovieEditor(PrimDataContext dataContext)
         {
-            if (dataContext == null)
-            {
-                throw new ArgumentNullException(nameof(dataContext));
-            }
-
-            _dataContext = dataContext;
+            _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             _collection = dataContext.Movies;
 
             IniMenuItems();
@@ -42,12 +38,27 @@ namespace MovieIndustry.Editing
 
         private void IniMenuItems()
         {
-            _menuItems = new Common.ConsoleUI.MenuItem[]
+            _menuItems = new MenuItem[]
             {
-                new Common.ConsoleUI.MenuItem("вийти", null),
-                new Common.ConsoleUI.MenuItem("створити тестові дані", CreateTestingData),
-                new Common.ConsoleUI.MenuItem("дані як текст", ShowAsText, true),
+                new MenuItem("вийти", null),
+                new MenuItem("створити тестові дані", CreateTestingData),
+                new MenuItem("дані як текст", ShowAsText, true),
+                new MenuItem("видалити усі дані", Clear),
+                new MenuItem("зберегти дані", Save, stopping: true),
+                new MenuItem("детально про...", ShowObjectDetails, true),
+                new MenuItem("додати фільм", Add),
+                new MenuItem("видалити фільм", Remove)
             };
+        }
+
+        private void PrepareRunning()
+        {
+            if (_dataContext.Load())
+                Console.WriteLine("  Дані завантажено");
+            else
+                Console.WriteLine("  Файл з даними відсутній");
+
+            SimpleCommandController.StopToView();
         }
 
         private void PrepareScreen()
@@ -55,11 +66,6 @@ namespace MovieIndustry.Editing
             Console.Clear();
             Console.WriteLine("ПО \"Кіностудія\"\n");
             Console.WriteLine(_collection.ToTable());
-        }
-
-        private void PrepareRunning()
-        {
-            SimpleCommandController.StopToView();
         }
 
         private void CreateTestingData()
@@ -71,36 +77,68 @@ namespace MovieIndustry.Editing
             }
         }
 
+        private void Clear()
+        {
+            _dataContext.Clear();
+        }
+
         private void ShowAsText()
         {
-            Console.WriteLine("\nФільми:\n");
+            Console.WriteLine();
+            Console.WriteLine(_collection.ToLineList("Фільми"));
+        }
 
-            int i = 1;
-            foreach (var movie in _collection)
+        private void ShowObjectDetails()
+        {
+            int id = Inputting.InputInt32(" Введіть Id фільму");
+            Movie movie = _collection.FirstOrDefault(m => m.Id == id);
+
+            if (movie != null)
             {
-                Console.WriteLine(
-                    string.Format(
-                        "\tФільм №{0}\n" +
-                        "\t  Назва: {1}\n" +
-                        "\t  Режисер: {2}\n" +
-                        "\t  Рік виходу: {3}\n" +
-                        "\t  Жанр: {4}\n" +
-                        "\t  Рейтинг: {5}\n" +
-                        "\t  Примітка: {6}\n" +
-                        "\t  Опис: {7}\n",
-                        i++,
-                        movie.Title ?? "—",
-                        movie.Director ?? "—",
-                        movie.ReleaseYear?.ToString() ?? "—",
-                        movie.Genre ?? "—",
-                        movie.Rating?.ToString("0.0") ?? "—",
-                        movie.Note ?? "—",
-                        movie.Description ?? "—"
-                    )
-                );
+                Console.WriteLine(movie);
             }
+            else
+            {
+                Console.WriteLine($"  У списку немає фільму з Id = {id}");
+            }
+        }
 
-            SimpleCommandController.StopToView();
+        private void Add()
+        {
+            Console.WriteLine();
+            Movie movie = new Movie();
+
+            movie.Title = Inputting.InputString("Назва фільму");
+            movie.Director = Inputting.InputString("Режисер");
+            movie.ReleaseYear = Inputting.InputNullableInt32("Рік випуску");
+            movie.Genre = Inputting.InputString("Жанр");
+            movie.Rating = Inputting.InputNullableDouble("Рейтинг (0–10)");
+            movie.Note = Inputting.InputString("Примітка");
+            movie.Description = Inputting.InputString("Опис");
+
+            movie.Id = _collection.Any() ? _collection.Max(m => m.Id) + 1 : 1;
+            _collection.Add(movie);
+        }
+
+        private void Remove()
+        {
+            int id = Inputting.InputInt32(" Введіть Id фільму");
+            Movie movie = _collection.FirstOrDefault(m => m.Id == id);
+
+            if (movie != null)
+            {
+                _collection.Remove(movie);
+            }
+            else
+            {
+                Console.WriteLine($"  У списку немає фільму з Id = {id}");
+            }
+        }
+
+        private void Save()
+        {
+            _dataContext.Save();
+            Console.WriteLine("  Дані збережено");
         }
     }
 }

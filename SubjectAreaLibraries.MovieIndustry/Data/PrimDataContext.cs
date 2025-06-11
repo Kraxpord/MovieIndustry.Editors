@@ -13,7 +13,7 @@ namespace MovieIndustry.Data
 
         public ICollection<Movie> Movies
         {
-            get { return (ICollection<Movie>)_dataSet.Movie; }
+            get { return _dataSet.Movies; }
         }
 
         public void Clear()
@@ -36,7 +36,7 @@ namespace MovieIndustry.Data
             return _dataSet.CreateTestingData();
         }
 
-        //-----------------------------------------------------------------------
+        // -----------------------------------------------------------------------
 
         private string _directoryName = "";
 
@@ -58,19 +58,20 @@ namespace MovieIndustry.Data
         public PrimDataContext(string directoryName)
         {
             DirectoryName = directoryName;
-            FileName = "MovieIndustry";
+            FileName = "MovieIndustry"; // оновлено
         }
 
         public PrimDataContext() : this("") { }
 
-        // Можна змінити на бінарний контролер при потребі
+        // Можна змінити на Binary при потребі
         protected PrimXmlFileIoController _fileIoController = new PrimXmlFileIoController();
 
         public string FilePath
         {
             get
             {
-                return Path.Combine(DirectoryName, FileName + _fileIoController.FileExtension);
+                return Path.Combine(DirectoryName,
+                    FileName + _fileIoController.FileExtension);
             }
         }
 

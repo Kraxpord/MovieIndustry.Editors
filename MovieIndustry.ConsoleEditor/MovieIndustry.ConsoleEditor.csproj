@@ -43,16 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Editing\MenuItem.cs" />
     <Compile Include="Editing\MovieEditor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Studying\DataTraining.cs" />
+    <Compile Include="Studying\EntitiesTraining.cs" />
     <Compile Include="Studying\FileIoTraining.cs" />
     <Compile Include="Studying\MovieDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ConsoleEditor.cd" />
+    <None Include="ConsoleEditor_h.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common.ConsoleUI\Common.ConsoleUI.csproj">
