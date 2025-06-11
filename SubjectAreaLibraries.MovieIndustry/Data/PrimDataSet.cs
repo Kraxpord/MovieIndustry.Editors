@@ -10,9 +10,7 @@ namespace MovieIndustry.Data
         // Основна колекція фільмів
         public readonly List<Movie> Movies = new List<Movie>();
 
-        // Прибираємо цю непотрібну властивість, або:
-        // Ініціалізуємо її посиланням на Movies
-        public ICollection<Movie> Movie => Movies;
+        public object Movie { get; internal set; }
 
         public void Clear()
         {

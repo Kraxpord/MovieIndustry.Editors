@@ -3,9 +3,8 @@ using MovieIndustry.Data;
 using MovieIndustry.Data.Formatting;
 using MovieIndustry.Data.IO;
 using MovieIndustry.Data.Testing;
-using SubjectAreaLibraries.MovieIndustry.Data.IO;
 
-namespace MovieIndustry.Training
+namespace MovieIndustry.Studying
 {
     internal class FileIoTraining
     {
@@ -15,14 +14,14 @@ namespace MovieIndustry.Training
 
             //StudyXmlFileIo();
             //StudyBinaryFileIo();
-            StudyDataContextIo();
+            StudyMovieContextIo();
         }
 
         private static void StudyXmlFileIo()
         {
             Console.WriteLine(" --- StudyXmlFileIo ---");
 
-            PrimXmlFileIoController xmlController = new PrimXmlFileIoController();
+            var xmlController = new MovieXmlFileIoController();
 
             PrimDataSet dataSet = new PrimDataSet();
             dataSet.CreateTestingData();
@@ -41,9 +40,9 @@ namespace MovieIndustry.Training
 
         private static void StudyBinaryFileIo()
         {
-            Console.WriteLine(" --- StudyBinaryFileIo ---");
+            Console.WriteLine(" --- StudyBinaryFileIo  ---");
 
-            PrimBinaryFileIoController binaryController = new PrimBinaryFileIoController();
+            MovieBinaryFileIoController binaryController = new MovieBinaryFileIoController();
 
             PrimDataSet dataSet = new PrimDataSet();
             dataSet.CreateTestingData();
@@ -60,9 +59,9 @@ namespace MovieIndustry.Training
             Console.WriteLine(dataSet.ToDataString("dataSet"));
         }
 
-        private static void StudyDataContextIo()
+        private static void StudyMovieContextIo()
         {
-            Console.WriteLine(" --- StudyDataContextIo ---");
+            Console.WriteLine(" --- StudyMovieContextIo ---");
 
             var dataContext = new PrimDataContext();
             dataContext.CreateTestingData();
@@ -76,6 +75,36 @@ namespace MovieIndustry.Training
             Console.WriteLine("dataContext: " + dataContext);
             dataContext.Load();
             Console.WriteLine("dataContext: " + dataContext);
+        }
+
+        private class MovieXmlFileIoController
+        {
+            public MovieXmlFileIoController()
+            {
+            }
+
+            internal void Load(PrimDataSet dataSet, string fileName)
+            {
+                throw new NotImplementedException();
+            }
+
+            internal void Save(PrimDataSet dataSet, string fileName)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private class MovieBinaryFileIoController
+        {
+            internal void Load(PrimDataSet dataSet, string fileName)
+            {
+                throw new NotImplementedException();
+            }
+
+            internal void Save(PrimDataSet dataSet, string fileName)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

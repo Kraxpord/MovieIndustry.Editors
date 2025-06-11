@@ -2,7 +2,7 @@
 using System;
 using MovieIndustry.Data;
 using MovieIndustry.Editing;
-using MovieIndustry.Training;
+using MovieIndustry.Studying;
 
 namespace MovieIndustry.ConsoleEditor
 {
@@ -16,6 +16,7 @@ namespace MovieIndustry.ConsoleEditor
 
             Console.WriteLine(" Реалізація редактора даних ПО \"Кіностудія\"");
 
+            //EntitiesTraining.Run();
             //DataTraining.Run();
             //FileIoTraining.Run();
 
@@ -24,22 +25,15 @@ namespace MovieIndustry.ConsoleEditor
             RunProgram();
         }
 
-        static MovieEditor _movieEditor = null;
+        static MovieEditor _moviesEditor = null;
         static PrimDataContext _dataContext = null;
 
         private static void RunProgram()
         {
             _dataContext = new PrimDataContext();
             _dataContext.DirectoryName = @"..\..\files";
-
-        
-            if (_dataContext.IsEmpty())
-            {
-                _dataContext.CreateTestingData();  
-            }
-
-            _movieEditor = new MovieEditor(_dataContext);
-            _movieEditor.Run();
+            _moviesEditor = new MovieEditor(_dataContext);
+            _moviesEditor.Run();
         }
     }
 }

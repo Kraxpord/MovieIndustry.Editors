@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MovieIndustry.Data.PrimDataSet">
+    <Position X="5" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+    <ShowAsCollectionAssociation>
+      <Field Name="Movies" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MovieIndustry.Data.PrimDataContext">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="_dataSet" />
+      <Field Name="_fileIoController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MovieIndustry.ConsoleEditor.Program">
+    <Position X="9" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAQAAAAAAABAAAEAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataContext" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MovieIndustry.Data.IO.PrimXmlFileIoController">
+    <Position X="7.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MovieIndustry.Editing.MovieEditor">
+    <Position X="5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>SAIgAIAAAAAAAECAAAAABBAABAAAQACQAAAAAABAAAI=</HashCode>
+      <FileName>Editing\MovieEditor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_commandController" />
+      <Field Name="_dataContext" />
+      <Field Name="_menuItems" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Common.ConsoleUI.MenuItem">
+    <Position X="2.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.ConsoleUI.SimpleCommandController">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MovieIndustry.Entities.Movie">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
